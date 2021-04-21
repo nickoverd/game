@@ -5,8 +5,11 @@ public class adventure {
 		map map = new map();
 		@SuppressWarnings("resource")
 		Scanner input_travel = new Scanner(System.in);
-
-		while (map.getX()!= 5 || map.getY()!= 2) {
+		map.setTreasure_y();
+		map.setTresure_x();
+		map.set_x();
+		map.set_y();
+		while (map.getX()!= map.getTresure_x() || map.getY()!= map.getTreasure_y()) {
 			
 			System.out.println("you come to a stop and wonder where is next North South East or West");
 			map.location();
@@ -32,14 +35,14 @@ public class adventure {
 			var direction = input_travel.next();
 			if (direction.equals("North")) {
 				map.setY_north(map.getY());
-				System.out.println(map.getY());
+				
 			}
 			else if (direction.equals("South")) {
 				map.setY_south(map.getY());
 			}
 			else if (direction.equals("East")) {
 				map.setX_east(map.getX());
-				System.out.println(map.getX());
+				
 			}
 			
 			else if (direction.equals("West")) {
@@ -51,8 +54,23 @@ public class adventure {
 			}
 
 		}
-		treasure treasure = new treasure();
-		treasure.get_treasure();
+		
+		int num = map.getT();
+		if (num < 7) {
+			System.out.println("you have recieved 10000 gold coins");
+			System.out.println("almost as if you knew where the treasure was");
+		}
+		else if (num < 9) {
+			System.out.println("you have recieved 1000 gold coins");
+		}
+		else if(num < 12) {
+			System.out.println("you have recieved 100 gold coins");
+		}
+		else {
+			System.out.println("you have recieved 10 gold coins");
+			System.out.println("if only you got here before everyone else");
+		
 		System.out.println("well done you have succeeded where none have failed ;)");
+	}
 	}
 }
