@@ -6,9 +6,10 @@ public class adventure {
 		@SuppressWarnings("resource")
 		Scanner input_travel = new Scanner(System.in);
 
-		while (map.getX() != 5 & map.getY() != 2) {
+		while (map.getX()!= 5 || map.getY()!= 2) {
 			
 			System.out.println("you come to a stop and wonder where is next North South East or West");
+			map.location();
 			{
 			if (map.getY() <= -2) {
 				System.out.println("you feel a foul taste in the air going anymore South is a bad idea");
