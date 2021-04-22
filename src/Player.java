@@ -29,17 +29,25 @@ public class Player {
 		System.out.println("luck: " + luck);
 		System.out.println("perception: " + perception);
 	}
-	
+	public void add_money(int $) {
+		money = money + $;
+	}
 	
 	public int get_money() {
+		System.out.println(money);
 		return money;
 	}
 	public void lvlup() {
-		str++;
+		str = str + randomnum();
+		Int = Int + randomnum();
+		dex = dex + randomnum();;
+		luck = luck + randomnum();
+		perception = perception + randomnum();
 		
 	}
 	public int randomnum() {
-		int num = rand.nextInt(4);
+		int num = rand.nextInt(5);
 		return num;
+		
 	}
 }

@@ -1,18 +1,29 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class adventure {
 	void adventures() {
 		map map = new map();
+		Player player = new Player();
 		@SuppressWarnings("resource")
 		Scanner input_travel = new Scanner(System.in);
+		Random rand = new Random();
 		map.setTreasure_y();
 		map.setTresure_x();
 		map.set_x();
 		map.set_y();
+		player.inititem();
+		player.lvlup();
+		
 		while (map.getX()!= map.getTresure_x() || map.getY()!= map.getTreasure_y()) {
-			
+			int num = rand.nextInt(4);
 			System.out.println("you come to a stop and wonder where is next North South East or West");
+			System.out.println("or maybe you would like to look at your Inventory or stats");
 			map.location();
+			if (num == 0){
+				player.add_inventory();
+				
+			}
 			{
 			if (map.getY() <= -2) {
 				System.out.println("you feel a foul taste in the air going anymore South is a bad idea");
@@ -48,6 +59,13 @@ public class adventure {
 			else if (direction.equals("West")) {
 				map.setX_west(map.getX());
 			}
+			else if (direction.equals("Inventory")) {
+				player.get_money();
+				player.get_inventory();
+			}
+			else if (direction.equals("stats")) {
+				player.get_stats();
+			}
 			else {
 				System.out.println("you forget which direction you are suppost to go was it North?");
 				//System.out.println(direction);
@@ -58,19 +76,27 @@ public class adventure {
 		int num = map.getT();
 		if (num < 7) {
 			System.out.println("you have recieved 10000 gold coins");
+			player.add_money(10000);
 			System.out.println("almost as if you knew where the treasure was");
 		}
 		else if (num < 9) {
 			System.out.println("you have recieved 1000 gold coins");
+			player.add_money(1000);
 		}
 		else if(num < 12) {
 			System.out.println("you have recieved 100 gold coins");
+			player.add_money(100);
 		}
 		else {
 			System.out.println("you have recieved 10 gold coins");
+			player.add_money(10);
 			System.out.println("if only you got here before everyone else");
 		
 		System.out.println("well done you have succeeded where none have failed ;)");
 	}
+		System.out.println("this is what you have attained on your journey");
+		player.get_money();
+		player.get_inventory();
+		
 	}
 }
