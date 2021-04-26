@@ -1,7 +1,7 @@
 import java.util.Random;
 public class treasure {
 	Random rand = new Random();
-	String[] all_loot = {"Lanturn","Sword","Spy glass","Rag"};
+	String[] all_loot = {"Lanturn","Sword","Spy glass","Potion"};
 	// lanturn will provide light in areas - sword fight - spy glass -
 	public String item() {
 		int numb = rand.nextInt(3);
