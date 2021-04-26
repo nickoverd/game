@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*;
 import java.util.Random;
 
 public class Player {
@@ -42,10 +43,20 @@ public class Player {
 	}
 	public void full_heal() {
 		current_health = max_health;
+		items.remove("Potion");
 	}
 	
 	public void get_inventory() {
 		System.out.println(items);
+		if(items.contains("Potion")) {
+			System.out.println("would you like to use a Potion?");
+			@SuppressWarnings("resource")
+			Scanner inputs = new Scanner(System.in);
+			var input_2 = inputs.next();
+			if(input_2.equals("yes")) {
+				full_heal();
+			}	
+		}
 	}
 	public void fight(int health_,int dam_,int p_health,int p_dam){
 		while (health_>0) {
