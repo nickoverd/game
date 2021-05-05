@@ -8,6 +8,7 @@ public class adventure {
 		@SuppressWarnings("resource")
 		Scanner input_travel = new Scanner(System.in);
 		Random rand = new Random();
+		//sets up the adventure
 		map.setTreasure_y();
 		map.setTresure_x();
 		map.set_x();
@@ -18,7 +19,7 @@ public class adventure {
 		while (map.getX()!= map.getTresure_x() || map.getY()!= map.getTreasure_y()) {
 			int num = rand.nextInt(2);
 			System.out.println("you come to a stop and wonder where is next North South East or West");
-			System.out.println("or maybe you would like to look at your Inventory,health or stats");
+			System.out.println("or maybe you would like to look at your Inventory or stats");
 			map.location();
 			if (num == 0){
 				player.encounter();
@@ -28,25 +29,6 @@ public class adventure {
 			if (player.current_health<=0){
 				break;
 			}
-			{
-			if (map.getY() <= -2) {
-				System.out.println("you feel a foul taste in the air going anymore South is a bad idea");
-			}
-			if (map.getY() >= 5) {
-				System.out.println("you feel a foul taste in the air going anymore North is a bad idea");
-			}
-			if (map.getX() <= -4) {
-				System.out.println(
-						"naviagion is not your strong suit ... you see a sign saying 'DO NOT ENTER' in the West");
-			}
-			if (map.getX() >= 6) {
-				System.out.println(
-						"naviagion is not your strong suit ... you see a sign saying 'DO NOT ENTER' in the East");
-			}
-			if (map.getX() == 4 && map.getY() == 20) {
-				System.out.println("you feel a blaze on this very spot");
-			}
-		}
 			var direction = input_travel.next();
 			if (direction.equals("North")) {
 				map.setY_north(map.getY());
@@ -69,9 +51,6 @@ public class adventure {
 			}
 			else if (direction.equals("stats")) {
 				player.get_stats();
-			}
-			else if (direction.equals("health")) {
-				player.get_cur_health();
 			}
 			else {
 				System.out.println("you forget which direction you are suppost to go was it North?");
@@ -99,7 +78,6 @@ public class adventure {
 				player.add_money(10);
 				System.out.println("if only you got here before everyone else");
 			
-			System.out.println("well done you have succeeded where none have failed ;)");
 		}
 		System.out.println("this is what you have attained on your journey");
 		player.get_money();

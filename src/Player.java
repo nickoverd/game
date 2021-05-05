@@ -17,14 +17,17 @@ public class Player {
 	int lvlxp ;
 	int current_xp;
 	
+	//include random values
 	Random rand = new Random();
+	//arraylist containing items this is a basic inventory system
 	ArrayList<String> items = new ArrayList<String>();
+	//adds items to the arraylist
 	treasure treausure = new treasure();
 	
 
-	Enemy orge = new Enemy(30, 10, 1, "orge");
+	Enemy orge = new Enemy(30, 25, 1, "orge");
 	Enemy goblin = new Enemy(5, 5, 10,"goblin");
-	Enemy skel = new Enemy(10, 6, 2, "skeleton");
+	Enemy skel = new Enemy(10, 10, 2, "skeleton");
 
 	public void inititem() {
 		items.add("compass");
@@ -38,7 +41,7 @@ public class Player {
 	}
 	
 	public void set_dam() {
-		damage_mod = 10 + (dex * 2)+(str * 2);
+		damage_mod = 15 + (dex+str);
 		
 	}
 	public void full_heal() {
@@ -71,7 +74,7 @@ public class Player {
 		System.out.println("luck: " + luck);
 		System.out.println("agility: " + agility);
 		System.out.println("damage: " + damage_mod);
-		System.out.println("max health: " + max_health);
+		System.out.println("health: "+ current_health +"/"+ max_health);
 	}
 	public void add_money(int $) {
 		money = money + $;
@@ -89,7 +92,7 @@ public class Player {
 		agility = agility + randomnum();
 		max_health += 50;
 		current_health +=50;
-		lvlxp += 30;
+		lvlxp += 50;
 		set_dam();
 		
 	}
