@@ -10,7 +10,7 @@ public class runner {
 		System.out.println("hello " + new_name + " you have embarked on a new adventure good luck!");
 		adventure adventure = new adventure();
 		adventure.adventures();
-		
+		//adventure done
 		System.out.println("well done " + new_name + " I do hope you learnt of heroics and what people are capable of");
 	}
 	
