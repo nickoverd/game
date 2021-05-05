@@ -25,9 +25,9 @@ public class Player {
 	treasure treausure = new treasure();
 	
 
-	Enemy orge = new Enemy(30, 25, 1, "orge");
-	Enemy goblin = new Enemy(5, 5, 10,"goblin");
-	Enemy skel = new Enemy(10, 10, 2, "skeleton");
+	Enemy orge = new Enemy(30, 10, 1, "orge");
+	Enemy goblin = new Enemy(5, 2, 10,"goblin");
+	Enemy skel = new Enemy(10, 7, 2, "skeleton");
 
 	public void inititem() {
 		items.add("compass");
@@ -41,7 +41,7 @@ public class Player {
 	}
 	
 	public void set_dam() {
-		damage_mod = 15 + (dex+str);
+		damage_mod = 10 + (dex+str);
 		
 	}
 	public void full_heal() {
@@ -52,7 +52,7 @@ public class Player {
 	public void get_inventory() {
 		System.out.println(items);
 		if(items.contains("Potion")) {
-			System.out.println("would you like to use a Potion?");
+			System.out.println("would you like to use a Potion? input yes");
 			@SuppressWarnings("resource")
 			Scanner inputs = new Scanner(System.in);
 			var input_2 = inputs.next();
@@ -61,10 +61,10 @@ public class Player {
 			}	
 		}
 	}
-	public void fight(int health_,int dam_,int p_health,int p_dam){
-		while (health_>0) {
-			health_ = health_ - p_dam;
-			p_health = p_health -dam_;
+	public void fight(int p_health,int p_dam){
+		while (p_health>0) {
+			current_health = current_health - p_dam;
+			p_health  = p_health- damage_mod;
 		}
 	}
 	public void get_stats() {
@@ -91,8 +91,8 @@ public class Player {
 		luck = luck + randomnum();
 		agility = agility + randomnum();
 		max_health += 50;
-		current_health +=50;
-		lvlxp += 50;
+		current_health +=45;
+		lvlxp += 30;
 		set_dam();
 		
 	}
@@ -112,24 +112,30 @@ public class Player {
 		System.out.println(current_health);
 	}
 	public void encounter() {
-		int num3 = rand.nextInt(2);
+		int num3 = rand.nextInt(3);
 		if (num3==0) {
 			System.out.println("you have encountered a orge ");
-			fight(orge.health, orge.dam, current_health, damage_mod);
+			fight(orge.health, orge.dam);
 			gain_xp(orge.health);
 			add_money(orge.dam);
+			add_inventory();
 		}
 		else if (num3==1) {
 			System.out.println("you have encountered a goblin ");
-			fight(goblin.health, goblin.dam, current_health, damage_mod);
+			fight(goblin.health, goblin.dam);
 			gain_xp(goblin.health);
 			add_money(goblin.dam);
+			add_inventory();
 		}
 		if (num3==2) {
 			System.out.println("you have encountered a skeleton ");
-			fight(skel.health, skel.dam, current_health, damage_mod);
+			fight(skel.health, skel.dam);
 			gain_xp(skel.health);
 			add_money(skel.dam);
+			add_inventory();
+		}
+		if (num3==3) {
+			
 		}
 	}
 }

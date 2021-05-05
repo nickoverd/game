@@ -15,6 +15,8 @@ public class adventure {
 		map.set_y();
 		player.inititem();
 		player.lvlup();
+		player.lvlup();
+		player.lvlup();
 		
 		while (map.getX()!= map.getTresure_x() || map.getY()!= map.getTreasure_y()) {
 			int num = rand.nextInt(2);
@@ -23,7 +25,6 @@ public class adventure {
 			map.location();
 			if (num == 0){
 				player.encounter();
-				player.add_inventory();
 				
 			}
 			if (player.current_health<=0){
